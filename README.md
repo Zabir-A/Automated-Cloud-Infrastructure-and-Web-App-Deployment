@@ -62,7 +62,7 @@ The infrastructure is created by Terraform and consists of:
 
   - `provider.tf` - Provider information for Terraform & version
 
-  *Each Module's subdirectory will contain its own, `main.tf`, `outputs.tf` & `variables.tf` files*
+  **Each Module's subdirectory will contain its own, `main.tf`, `outputs.tf` & `variables.tf` files**
 
   - `backend_config.tf` (produced by backend_setup module) backend db configuration state file
 
@@ -101,9 +101,9 @@ It uses a main playbook with roles using application configuration files (Jinja2
 
 - `web_app.yml` (main playbook) 
 
-*Each Role's subdirectory has a `tasks` directory that contains a `main.yml` file to define its tasks*
+**Each Role's subdirectory has a `tasks` directory that contains a `main.yml` file to define its tasks**
 
-*The web & backend roles' directories have a `handlers` subdirectory that contains a `main.yml` file (sub task that is run when notified in it's main task file)*
+**The web & backend roles' directories have a `handlers` subdirectory that contains a `main.yml` file (sub task that is run when notified in it's main task file)**
 
 Running the playbook requires `ansible.cfg` file to be configured for ssh connections to the EC2 instances and declaring the inventory variable. 
 
