@@ -1,0 +1,51 @@
+---
+- name: Include vars (webserver)
+  include_vars: "../../../group_vars/group_variables.yml"
+
+- name: Install Nginx & Git
+  ansible.builtin.package:
+    name: 
+      - nginx
+      - git
+    state: latest
+  become: true
+
+- name: Create web root dir
+  ansible.builtin.file:
+    path: /var/www/web_root
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: "0775"
+  become: true
+
+- name: Configure Nginx
+  ansible.builtin.template:
+    src: nginx.conf.j2
+    dest: /etc/nginx/sites-available/default
+  become: true
+  notify: restart nginx
+
+- name: Enable & run Nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes
+
+- name: Clone repository on webserver
+  ansible.builtin.git:
+    repo: https://github.com/timoguic/acit4640-py-mysql.git
+    dest: /home/ubuntu/frontend
+    clone: yes
+    update: yes
+  become: true
+    
+- name: Copy to web root location
+  ansible.builtin.copy:
+    src: /home/ubuntu/frontend/frontend/
+    dest: /var/www/web_root/
+    owner: www-data
+    group: www-data
+    mode: "0775"
+    remote_src: yes
+  become: true

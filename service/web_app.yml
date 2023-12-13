@@ -1,0 +1,22 @@
+---
+- name: Roles for all host servers
+  hosts: all
+  roles: 
+    - common
+
+- name: Roles for backend & DB server
+  hosts: backend
+  become: true 
+  roles:
+    - backend
+
+- name: Roles for webserver
+  hosts: web
+  become: true 
+  roles:
+    - web
+
+
+        
+
+
