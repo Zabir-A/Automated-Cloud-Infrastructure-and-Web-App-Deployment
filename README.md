@@ -135,7 +135,7 @@ backend:
   - Create systemd service file
   - Enable & start backend service
 
-  handlers:
+  - handlers:
     - restart mysql
     - reload & restart systemd service
 
@@ -151,7 +151,7 @@ web:
   - Clone repository on webserver
   - Copy to web root location
 
-  handlers:
+  - handlers:
 
     - restart nginx
 
