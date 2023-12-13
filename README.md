@@ -203,16 +203,6 @@ web:
       - bucket_name = "<Your Bucket Name>"
       - dynamodb_name = "<Your DB Table Name>"
 
-
-`service` directory:
-
-  - Change SSH private key file path
-
-    1. `ansible.cfg`:
-    
-      - private_key_file = <SSH KEY>
-
-
 # Usage / Instructions
 
 #### Terraform Basic Commands: 
