@@ -1,4 +1,4 @@
-# Assignment 3 
+## Assignment 3 for ACIT 4640
 
 ### Project Overview
 The goal of this Assignment is to provision an infrastructure and deploy a web application across different EC2 Server instances, using AWS, Terraform Modules, Ansible Roles & Tasks.
